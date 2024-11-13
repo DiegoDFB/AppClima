@@ -1,0 +1,24 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AppClima.ViewModels"
+             x:Class="AppClima.Views.WeatherDetailPage">
+    <StackLayout>
+        <Label Text="{Binding Cidade.Nome}" FontSize="Large" />
+
+        <Button Text="Previsão para 1 dia" Command="{Binding ObterPrevisaoParaUmDiaCommand}" />
+        <Button Text="Previsão para 6 dias" Command="{Binding ObterPrevisaoParaSeisDiasCommand}" />
+
+        <CollectionView ItemsSource="{Binding Previsao.clima}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding data, StringFormat='Data: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding condicao_desc, StringFormat='Condição: {0}'}" />
+                        <Label Text="{Binding min, StringFormat='Mínima: {0}°C'}" />
+                        <Label Text="{Binding max, StringFormat='Máxima: {0}°C'}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
